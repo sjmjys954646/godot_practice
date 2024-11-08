@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bggg0rwoit3pj"]
+
+[ext_resource type="Texture2D" uid="uid://da8rb2iqhs0mi" path="res://start-assets/player.png" id="1_8v7fs"]
+[ext_resource type="Script" path="res://src/player.gd" id="1_b2gaa"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_b2gaa")
+
+[node name="PlayerImage" type="Sprite2D" parent="."]
+texture = ExtResource("1_8v7fs")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-48, -49, 50, -47, 47, 47, -49, 48)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -76)
+
+[node name="LaserTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="LaserTimer" to="." method="_on_laser_timer_timeout"]
