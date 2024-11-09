@@ -7,6 +7,8 @@
 radius = 34.0147
 
 [node name="Coin" type="Area2D"]
+collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_38hm1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -15,4 +17,5 @@ texture = ExtResource("1_oo6m4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0pqvn")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

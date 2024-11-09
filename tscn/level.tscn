@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bggg0rwoit3pj" path="res://tscn/player.tscn" id="1_4n8mt"]
 [ext_resource type="Script" path="res://src/level.gd" id="1_5w7ji"]
 [ext_resource type="Texture2D" uid="uid://di2a1lmof3472" path="res://start-assets/background.png" id="1_kfdib"]
-[ext_resource type="PackedScene" uid="uid://bvphqm0gk3q8o" path="res://tscn/coin.tscn" id="2_w262m"]
+[ext_resource type="PackedScene" uid="uid://dwgkoqardnek4" path="res://tscn/ui.tscn" id="5_1fsnp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yapx3"]
 size = Vector2(1925.06, 20)
@@ -17,16 +17,16 @@ script = ExtResource("1_5w7ji")
 [node name="BG" type="Sprite2D" parent="."]
 position = Vector2(965, 544)
 texture = ExtResource("1_kfdib")
-
-[node name="Coin" parent="." instance=ExtResource("2_w262m")]
-position = Vector2(943, 420)
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_4n8mt")]
 position = Vector2(-1, -1)
 
 [node name="border" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="border"]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/StaticBody2D"]
 position = Vector2(962, -15)
@@ -34,6 +34,7 @@ shape = SubResource("RectangleShape2D_yapx3")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="border"]
 position = Vector2(1, 759)
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/StaticBody2D2"]
 position = Vector2(954, -23)
@@ -41,6 +42,7 @@ shape = SubResource("RectangleShape2D_yapx3")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="border"]
 position = Vector2(15, 1265)
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/StaticBody2D3"]
 position = Vector2(-33, -725)
@@ -48,6 +50,7 @@ shape = SubResource("RectangleShape2D_h31t0")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="border"]
 position = Vector2(1341, 1226)
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="border/StaticBody2D4"]
 position = Vector2(-33, -725)
@@ -58,8 +61,12 @@ wait_time = 0.25
 autostart = true
 
 [node name="Coins" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Lasers" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="UI" parent="." instance=ExtResource("5_1fsnp")]
 
 [connection signal="laser" from="Player" to="." method="_on_player_laser"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
